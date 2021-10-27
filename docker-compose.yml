@@ -3,8 +3,7 @@ services:
   backend: 
     image: golang:bullseye
     volumes:
-    - app:/Users/karolfilipczuk/Projekty/urlik
+    - /Users/karolfilipczuk/Projekty/urlik:/app
+    command: sh -c "cd /app && go run ."
   redis:
     image: redis:6.2.6
-volumes:
-  app:
