@@ -2,6 +2,8 @@ version: "3.9"
 services:
   backend: 
     image: golang:bullseye
+    ports:
+    - "3000:3000"
     volumes:
     - /Users/karolfilipczuk/Projekty/urlik:/app
     command: sh -c "cd /app && go run ."

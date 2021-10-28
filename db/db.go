@@ -1,0 +1,27 @@
+package db
+
+import (
+	"context"
+
+	"github.com/go-redis/redis/v8"
+)
+
+type Database struct {
+	Client *redis.Client
+}
+
+var Ctx = context.TODO()
+
+func NewDatabase(address string) (*Database, error) {
+	client := redis.NewClient(&redis.Options{
+		Addr:     address,
+		Password: "",
+		DB:       0,
+	})
+	if err := client.Ping(Ctx).Err(); err != nil {
+		return nil, err
+	}
+	return &Database{
+		Client: client,
+	}, nil
+}

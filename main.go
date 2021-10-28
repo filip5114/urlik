@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+
+	"github.com/filip5114/urlik/webserver"
+)
 
 func main() {
-	fmt.Println("Hello from Docker!")
+	if err := webserver.Run(3000); err != nil {
+		fmt.Fprintf(os.Stderr, "%s\n", err)
+	}
 }
